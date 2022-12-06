@@ -5,4 +5,5 @@ This repository contains the source code for the webapp on CSE15's Final Researc
 ## TODO:
 [ ] - Input Text/PDF/Video (priority in order)
 [ ] - Output PDF file
-[ ] - Side-by-side UI Design (Left: Input, Right: Output)
+[X] - Side-by-side UI Design (Left: Input, Right: Output)
+[ ] - Word Counter
