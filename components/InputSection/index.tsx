@@ -110,7 +110,7 @@ const InputSection = () => {
             </Tooltip>
           </div>
 
-          <div className="flex flex-row h-fit px-2 py-1 justify-center items-center rounded-full hover:shadow-md bg-green-600 hover:bg-green-700 hover:cursor-pointer">
+          <div className="flex flex-row h-fit px-2 py-1 justify-center items-center rounded-full hover:shadow-md bg-green-600 hover:bg-green-700 active:bg-green-800 hover:cursor-pointer">
             <span className="text-sm px-2 py-1 font-inter font-bold text-white">
               Outline Document
             </span>

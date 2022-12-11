@@ -21,7 +21,7 @@ const IconButton: FC<IBProps> = ({
     <Tooltip title={tooltipText}>
       <div
         onClick={click}
-        className={`flex flex-row h-fit px-4 py-1 justify-center items-center rounded-full hover:shadow-md hover:bg-gray-100 hover:cursor-pointer border-[1px] border-gray-200 ${className}`}
+        className={`flex flex-row h-fit px-4 py-1 justify-center items-center rounded-full hover:shadow-md hover:bg-gray-100 active:bg-gray-300 hover:cursor-pointer border-[1px] border-gray-200 ${className}`}
       >
         <Icon icon={iconName} className="text-[25px]" />
         {text ? (
