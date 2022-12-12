@@ -29,6 +29,36 @@ const OutputSection = () => {
         def_start_idx: 0,
         def_end_idx: 15,
       },
+      {
+        orig_sentence: 'The quick brown fox jumps over the lazy dog.',
+        term: 'fox',
+        definition:
+          'a small carnivorous mammal with a pointed snout and ears, a long bushy tail, and fur of a reddish-brown color.',
+        term_start_idx: 16,
+        term_end_idx: 19,
+        def_start_idx: 0,
+        def_end_idx: 15,
+      },
+      {
+        orig_sentence: 'The quick brown fox jumps over the lazy dog.',
+        term: 'fox',
+        definition:
+          'a small carnivorous mammal with a pointed snout and ears, a long bushy tail, and fur of a reddish-brown color.',
+        term_start_idx: 16,
+        term_end_idx: 19,
+        def_start_idx: 0,
+        def_end_idx: 15,
+      },
+      {
+        orig_sentence: 'The quick brown fox jumps over the lazy dog.',
+        term: 'fox',
+        definition:
+          'a small carnivorous mammal with a pointed snout and ears, a long bushy tail, and fur of a reddish-brown color.',
+        term_start_idx: 16,
+        term_end_idx: 19,
+        def_start_idx: 0,
+        def_end_idx: 15,
+      },
     ]);
   }, []);
 
@@ -65,10 +95,15 @@ const OutputSection = () => {
     saveAs(markdownBlob, 'my-markdown-file.md');
   };
 
+  const copyToClipboard = (jsonData) => {
+    let markdown = jsonFormatter(jsonData);
+    navigator.clipboard.writeText(markdown);
+  };
+
   return (
     <>
       <div className="border-gray-400 border-l-[0.25px]">
-        <div className="p-5 w-[600px] h-[700px]">
+        <div className="p-5 w-[600px] h-[700px] overflow-scroll">
           {textCards
             ? textCards.map((item, index) => (
                 <>
@@ -130,6 +165,7 @@ const OutputSection = () => {
                         iconName="material-symbols:content-copy-outline"
                         className="bg-white hover:bg-white ml-2 px-2"
                         tooltipText="Copy"
+                        click={() => copyToClipboard([item])}
                       />
                     </div>
                   </div>
@@ -142,6 +178,7 @@ const OutputSection = () => {
           <IconButton
             iconName="material-symbols:content-copy-outline"
             tooltipText="Copy"
+            click={() => copyToClipboard(textCards)}
           />
           <IconButton
             iconName="uil:export"
