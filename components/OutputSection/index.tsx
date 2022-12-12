@@ -107,7 +107,7 @@ const OutputSection = () => {
           {textCards
             ? textCards.map((item, index) => (
                 <>
-                  <div className="flex flex-col items-center mx-5 bg-gray-100 pt-4 px-4 rounded-md">
+                  <div className="flex flex-col items-center mx-5 bg-gray-100 pt-4 px-4 rounded-md mb-4">
                     {/* ORIGINAL SECTION */}
                     <span className="mb-2">Original Text</span>
                     <div className="bg-gray-50 rounded-lg p-5 shadow-sm w-full">
@@ -174,7 +174,7 @@ const OutputSection = () => {
             : null}
         </div>
 
-        <div className="flex min-h-[50px] items-center justify-end px-4 border-gray-400 border-t-[1px] border-l-[0.25px]">
+        <div className="flex min-h-[50px] items-center justify-end px-4 border-gray-400 border-t-[1px]">
           <IconButton
             iconName="material-symbols:content-copy-outline"
             tooltipText="Copy"
