@@ -26,19 +26,20 @@ const InputSection = () => {
     if (fileObj !== null) {
       const formData = new FormData();
 
-      formData.append('pdfFile', fileObj);
+      formData.append('document', fileObj);
 
-      axios({
-        method: 'post',
-        url: 'http://localhost:8080/extract-text',
-        data: formData,
-        headers: { 'Content-Type': 'multipart/form-data' },
+      axios.post("http://127.0.0.1:6969/upload/", formData, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'multipart/form-data'
+        },
       })
         .then((res) => {
           return res.data;
         })
         .then((extractedText) => {
-          setPDFText(extractedText.trim());
+          console.log(extractedText);
+          // setPDFText(extractedText.trim());
         });
     }
   };
