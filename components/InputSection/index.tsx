@@ -1,21 +1,19 @@
-import { Modal, Tooltip } from '@mui/material';
-import axios from 'axios';
-import { useEffect, useRef, useState } from 'react';
-import IconButton from '../IconButton';
-import UploadContainer from '../UploadContainer';
+import { Modal, Tooltip } from "@mui/material";
+import axios from "axios";
+import { useEffect, useRef, useState } from "react";
+import IconButton from "../IconButton";
+import UploadContainer from "../UploadContainer";
+// import { usePDFTextContext } from "../../pages/api/context";
 
 const InputSection = () => {
   const [modalActive, setModalActive] = useState<boolean>(false);
   const inputRef = useRef(null);
-  const [fileName, setFileName] = useState<string>(
-    'No file selected...'
-  );
-  const [pdfText, setPDFText] = useState<string>('');
+  const [fileName, setFileName] = useState<string>("No file selected...");
+  const [pdfText, setPDFText] = useState<string>("");
+  // const [pdfText, setPDFText] = usePDFTextContext();
 
   useEffect(() => {
-    modalActive
-      ? console.log('MODAL ACTIVE')
-      : console.log('MODAL DISABLED');
+    modalActive ? console.log("MODAL ACTIVE") : console.log("MODAL DISABLED");
   }, [modalActive]);
 
   useEffect(() => {
@@ -26,20 +24,23 @@ const InputSection = () => {
     if (fileObj !== null) {
       const formData = new FormData();
 
-      formData.append('document', fileObj);
+      formData.append("document", fileObj);
 
-      axios.post("http://127.0.0.1:6969/upload/", formData, {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'multipart/form-data'
-        },
-      })
+      axios
+        .post("http://127.0.0.1:8000/upload/", formData, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        })
         .then((res) => {
           return res.data;
         })
         .then((extractedText) => {
           console.log(extractedText);
-          // setPDFText(extractedText.trim());
+          setPDFText(extractedText);
+          localStorage.clear();
+          localStorage.setItem("extractedText", extractedText);
         });
     }
   };
@@ -56,7 +57,7 @@ const InputSection = () => {
       return;
     }
 
-    console.log('fileObj is', fileObj);
+    console.log("fileObj is", fileObj);
 
     // 👇️ reset file input
     event.target.value = null;
@@ -96,7 +97,7 @@ const InputSection = () => {
               click={handleClick}
             />
             <input
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
               // accept="application/pdf"
               ref={inputRef}
               type="file"
@@ -105,7 +106,7 @@ const InputSection = () => {
             <Tooltip title={fileName}>
               <span className="pl-4 text-sm text-gray-400">
                 {fileName.length > 20
-                  ? fileName.slice(0, 11) + '...'
+                  ? fileName.slice(0, 11) + "..."
                   : fileName}
               </span>
             </Tooltip>
